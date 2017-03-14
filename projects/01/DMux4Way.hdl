@@ -16,5 +16,11 @@ CHIP DMux4Way {
     OUT a, b, c, d;
 
     PARTS:
-    // Put your code here:
+    DMux(in=in, sel=sel[0], a=dmuxABA, b=dmuxABB);
+    DMux(in=in, sel=sel[0], a=dmuxCDA, b=dmuxCDB);
+
+    Mux(a=dmuxABA, b=false, sel=sel[1], out=a); 
+    Mux(a=dmuxABB, b=false, sel=sel[1], out=b); 
+    Mux(a=false, b=dmuxCDA, sel=sel[1], out=c); 
+    Mux(a=false, b=dmuxCDB, sel=sel[1], out=d); 
 }
